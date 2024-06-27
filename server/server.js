@@ -8,10 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/graphql', {
+const mongoURI = 'mongodb://551475c4-004c-c:812f1a2e-7cd6-2@mongodb-capsule-cfpl-svc:27017/app?authSource=admin&ssl=true';
+
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+}).then(() => console.log('MongoDB connected'))
+  .catch(err => console.log('MongoDB connection error:', err));
 
 const userSchema = new mongoose.Schema({
   name: String,
@@ -52,5 +55,5 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-const PORT = process.env.PORT || 3000; // Ensure this port matches the provided backend URL
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
