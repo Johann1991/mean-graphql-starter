@@ -7,7 +7,7 @@ import { SchemaLink } from '@apollo/client/link/schema';
 import { addMocksToSchema } from '@graphql-tools/mock';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 
-const uri = 'http://localhost:5006/graphql'; // GraphQL server URL
+const uri = 'http://mean-graphql-starter-serv-ozph-service:3000/graphql'; // <-- Use the provided backend URL
 
 const typeDefs = `
   type User {
@@ -30,12 +30,10 @@ const mocks = {
 };
 
 const schema = makeExecutableSchema({ typeDefs });
-const schemaLink = new SchemaLink({ schema });
+const mockLink = new SchemaLink({ schema });
 
 export function createApollo(httpLink: HttpLink) {
-  // Hardcoding the environment to 'development' for demonstration purposes
-  const isProduction = false;
-  const link = isProduction ? httpLink.create({ uri }) : schemaLink;
+  const link = mockLink; // Use mock link for local development
   return {
     link,
     cache: new InMemoryCache(),

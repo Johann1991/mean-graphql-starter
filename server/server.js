@@ -52,5 +52,5 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-const PORT = process.env.PORT || 5006;
+const PORT = process.env.PORT || 3000; // Ensure this port matches the provided backend URL
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
