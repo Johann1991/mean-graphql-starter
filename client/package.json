@@ -22,6 +22,8 @@
     "@angular/router": "^17.3.0",
     "@angular/ssr": "^17.3.0",
     "@apollo/client": "^3.10.7",
+    "@graphql-tools/mock": "^9.0.3",
+    "@graphql-tools/schema": "^10.0.4",
     "apollo-angular": "^7.0.2",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
